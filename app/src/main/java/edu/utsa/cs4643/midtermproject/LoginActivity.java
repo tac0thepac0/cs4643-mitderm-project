@@ -10,6 +10,10 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
+
+import edu.utsa.cs4643.midtermproject.Model.User;
+
 public class LoginActivity extends AppCompatActivity {
 
     private TextView username;
@@ -40,6 +44,10 @@ public class LoginActivity extends AppCompatActivity {
                     ),
                     Toast.LENGTH_SHORT
             ).show();
+
+            Intent intent = new Intent(LoginActivity.this, SwipeActivity.class);
+            intent.putExtra("USER", new User(username.getText().toString(), password.getText().toString()));
+            startActivity(intent);
         });
 
         registerButton.setOnClickListener(new View.OnClickListener() {
